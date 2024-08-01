@@ -37,7 +37,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.chason.startApplication.Main</mainClass>
+                                    <mainClass>com.chason.StartApplication</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
