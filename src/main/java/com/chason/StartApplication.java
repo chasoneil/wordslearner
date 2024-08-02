@@ -1,6 +1,6 @@
 package com.chason;
 
-import com.chason.page.WordsPage;
+import com.chason.container.page.WordsPage;
 
 public class StartApplication {
 

@@ -1,4 +1,4 @@
-package com.chason.dialog;
+package com.chason.container.dialog;
 
 import javax.swing.*;
 import java.awt.*;

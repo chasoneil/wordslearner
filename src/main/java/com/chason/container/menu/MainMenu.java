@@ -1,6 +1,6 @@
-package com.chason.menu;
+package com.chason.container.menu;
 
-import com.chason.dialog.InputDialog;
+import com.chason.container.dialog.InputDialog;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

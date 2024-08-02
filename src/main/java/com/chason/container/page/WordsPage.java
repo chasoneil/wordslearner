@@ -1,6 +1,6 @@
-package com.chason.page;
+package com.chason.container.page;
 
-import com.chason.menu.MainMenu;
+import com.chason.container.menu.MainMenu;
 
 import javax.swing.*;
 import java.awt.*;
