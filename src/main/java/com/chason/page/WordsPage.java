@@ -6,8 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class WordsPage {
 
@@ -19,8 +17,9 @@ public class WordsPage {
     public WordsPage(){
         prepareGUI();
 
-        MainMenu menu = new MainMenu();
+        MainMenu menu = new MainMenu(mainFrame);
         mainFrame.setJMenuBar(menu.jMenuBar);
+        mainFrame.setResizable(false);
         mainFrame.setVisible(true);
     }
 
@@ -75,11 +74,13 @@ public class WordsPage {
         bottomPanel.add(bRLabel);
         mainFrame.add(bottomPanel);
 
-        mainFrame.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent windowEvent){
-                System.exit(0);
-            }
-        });
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+//        mainFrame.addWindowListener(new WindowAdapter() {
+//            public void windowClosing(WindowEvent windowEvent){
+//                System.exit(0);
+//            }
+//        });
 
 
     }
