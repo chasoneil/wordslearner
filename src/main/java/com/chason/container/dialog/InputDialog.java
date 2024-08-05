@@ -12,9 +12,8 @@ public class InputDialog extends JDialog {
         container.setLayout(new GridLayout(2, 1));
         setBounds(650, 330, 434, 270);
 
-
-
         container.add(new Label("This is a Label"));
+        container.add(new Label("This is a Label2"));
     }
 
 }

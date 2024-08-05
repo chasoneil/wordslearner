@@ -1,6 +1,7 @@
 package com.chason.container.menu;
 
 import com.chason.container.dialog.InputDialog;
+import com.chason.container.dialog.SelectDialog;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,6 +19,7 @@ public class MainMenu {
         this.jFrame = jFrame;
 
         JMenu loadMenu = new JMenu("load");  // load words
+        JMenu selectMenu = new JMenu("select");  // load words
         JMenu helpMenu = new JMenu("help");
 
         JMenuItem inputMenuItem = new JMenuItem("input");
@@ -27,15 +29,22 @@ public class MainMenu {
         JMenuItem importMenuItem = new JMenuItem("import");
         importMenuItem.setActionCommand("import");
 
+        JMenuItem selectMenuItem = new JMenuItem("select");
+        selectMenuItem.setActionCommand("select");
+
         loadMenu.add(inputMenuItem);
         loadMenu.add(importMenuItem);
 
+        selectMenu.add(selectMenuItem);
+
         jMenuBar.add(loadMenu);
+        jMenuBar.add(selectMenu);
         jMenuBar.add(helpMenu);
 
         MenuItemListener menuItemListener = new MenuItemListener();
 
         inputMenuItem.addActionListener(menuItemListener);
+        selectMenuItem.addActionListener(menuItemListener);
         importMenuItem.addActionListener(menuItemListener);
     }
 
@@ -44,12 +53,12 @@ public class MainMenu {
 
             switch (e.getActionCommand()) {
                 case "input":
-                    InputDialog dialog = new InputDialog(jFrame);
-                    dialog.setVisible(true);
+                    new InputDialog(jFrame).setVisible(true);
                     break;
                 case "import":
                     break;
-                case "about":
+                case "select":
+                    new SelectDialog(jFrame).setVisible(true);
                     break;
                 default:
                     System.err.println("Unknown menu:" + e.getActionCommand());

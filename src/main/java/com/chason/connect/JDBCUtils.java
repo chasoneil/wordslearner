@@ -19,14 +19,12 @@ public class JDBCUtils {
 
         Connection connection = null;
         try {
-            Class.forName(DRIVER);
+            // Class.forName(DRIVER);
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return connection;
     }
-
-
 
 }

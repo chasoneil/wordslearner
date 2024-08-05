@@ -1,11 +1,14 @@
 package com.chason.container.page;
 
 import com.chason.container.menu.MainMenu;
+import com.chason.entity.EnglishWord;
+import com.chason.service.WordsService;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class WordsPage {
 
@@ -14,13 +17,30 @@ public class WordsPage {
     private JPanel centerPanel;
     private JPanel bottomPanel;
 
+    private static final int DEFAULT_LESSON = 1;
+
+    private List<EnglishWord> words;
+
+    private int point = -1;
+
     public WordsPage(){
+
+        initWords();
+        if (words != null && words.size() > 0) {
+            point = 0;
+        }
+
         prepareGUI();
 
         MainMenu menu = new MainMenu(mainFrame);
         mainFrame.setJMenuBar(menu.jMenuBar);
         mainFrame.setResizable(false);
         mainFrame.setVisible(true);
+    }
+
+    private void initWords() {
+        WordsService service = new WordsService();
+        words = service.listByLesson(DEFAULT_LESSON);
     }
 
     private void prepareGUI(){
@@ -35,8 +55,15 @@ public class WordsPage {
         headerPanel.setLayout(headerPanelLayout);
         mainFrame.add(headerPanel);
 
-        JLabel hLLabel = new JLabel("Word:     school", JLabel.CENTER);
-        JLabel hRLabel = new JLabel("Lesson1 -> Unit1", JLabel.CENTER);
+        String wordContent = "Word : ";
+        String lessonContent = "Lesson : ";
+        if (point != -1) {
+            wordContent += words.get(point).getWord();
+            lessonContent += words.get(point).getLesson();
+        }
+        JLabel hLLabel = new JLabel(wordContent, JLabel.CENTER);
+        JLabel hRLabel = new JLabel(lessonContent, JLabel.CENTER);
+
         headerPanel.add(hLLabel);
         headerPanel.add(hRLabel);
 
@@ -66,9 +93,10 @@ public class WordsPage {
         bottomPanel = new JPanel();
         bottomPanel.setLayout(headerPanelLayout);
         JLabel bLLabel = new JLabel();
-        bLLabel.setText("Correct!");
+        bLLabel.setText("Please input...");
         bLLabel.setHorizontalAlignment(JLabel.CENTER);
-        JLabel bRLabel = new JLabel("Answer: 学校 (n)", JLabel.CENTER);
+
+        JLabel bRLabel = new JLabel("Answer: ", JLabel.CENTER);
 
         bottomPanel.add(bLLabel);
         bottomPanel.add(bRLabel);
